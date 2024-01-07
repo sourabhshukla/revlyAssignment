@@ -1,17 +1,14 @@
 import Header from "../components/Header";
 import DoubtContainer from "../components/DoubtContainer";
-// import { enqueueSnackbar } from "notistack";
-import { toast } from "react-toastify";
 import { redirect } from "react-router-dom";
+import SnackbarUtils from "../utils/CustomSnackbar";
 
 export const loader = () => {
-  // enqueueSnackbar("hellp");
-  toast.success("hello");
-  toast;
   const userType = localStorage.getItem("userType");
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
   if (!userType || !username || !token) {
+    SnackbarUtils.warning("Please login to access this resource");
     return redirect("/login");
   }
   return null;

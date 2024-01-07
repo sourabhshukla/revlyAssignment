@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSnackbar } from "notistack";
 import axios from "axios";
+import { Link } from "react-router-dom";
 export default function LoginForm() {
   const [userData, setUserData] = useState({
     email: "",
@@ -62,6 +63,12 @@ export default function LoginForm() {
       <button className="btn btn-block btn-primary" onClick={handleSubmit}>
         Login
       </button>
+      <div>
+        Don't have an Account?{" "}
+        <Link to="/register" className="text-primary">
+          Register Now
+        </Link>
+      </div>
     </div>
   );
 }

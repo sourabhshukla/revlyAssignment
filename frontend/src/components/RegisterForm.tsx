@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSnackbar } from "notistack";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function RegisterForm() {
   const { enqueueSnackbar } = useSnackbar();
@@ -157,6 +158,12 @@ export default function RegisterForm() {
       <button className="btn btn-block btn-primary" onClick={handleSubmit}>
         Register
       </button>
+      <div>
+        Already have an Account?{" "}
+        <Link to="/login" className="text-primary">
+          Login here
+        </Link>
+      </div>
     </div>
   );
 }

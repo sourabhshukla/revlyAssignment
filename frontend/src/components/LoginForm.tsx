@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useSnackbar } from "notistack";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/config";
 export default function LoginForm() {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
 
   const handleChange = (e: React.SyntheticEvent) => {
     const target = e.target as HTMLInputElement;
@@ -28,10 +30,16 @@ export default function LoginForm() {
   const handleSubmit = async () => {
     if (validateInput()) {
       try {
-        const res = await axios.post(
-          "http://localhost:3001/auth/login",
-          userData
-        );
+        const res = await axios.post(`${BASE_URL}/auth/login`, userData);
+        const data = res.data;
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.user.username);
+        localStorage.setItem("role", data.user.role);
+        navigate("/");
+        enqueueSnackbar("User logged in Successfully", {
+          autoHideDuration: 3000,
+          variant: "success",
+        });
       } catch (e: any) {
         console.log(e);
         enqueueSnackbar(e.response?.data?.message, {

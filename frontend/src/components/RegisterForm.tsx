@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useSnackbar } from "notistack";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/config";
 
 export default function RegisterForm() {
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -45,10 +47,12 @@ export default function RegisterForm() {
   const handleSubmit = async () => {
     if (validateInput()) {
       try {
-        const res = await axios.post(
-          "http://localhost:3001/auth/regsiter",
-          userData
-        );
+        const res = await axios.post(`${BASE_URL}/auth/register`, userData);
+        enqueueSnackbar("Registered Successfully", {
+          autoHideDuration: 3000,
+          variant: "success",
+        });
+        navigate("/login");
       } catch (e: any) {
         console.log(e);
         enqueueSnackbar(e.response?.data?.message, {
@@ -59,7 +63,7 @@ export default function RegisterForm() {
     }
   };
   return (
-    <div className="flex flex-col rounded-lg justify-around items-center border-2 w-96 p-8 gap-y-8 border-solid ">
+    <div className="flex flex-col rounded-lg justify-around items-center border-2 w-96 p-8 gap-y-4 border-solid ">
       <h2 className="text-3xl font-bold">Register</h2>
       <input
         type="text"

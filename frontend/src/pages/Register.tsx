@@ -1,6 +1,16 @@
+import { redirect } from "react-router-dom";
 import Header from "../components/Header";
 import RegisterForm from "../components/RegisterForm";
-import { toast } from "react-toastify";
+import SnackbarUtils from "../utils/CustomSnackbar";
+
+export const loader = () => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    SnackbarUtils.warning("Please logout first to Register");
+    return redirect("/");
+  }
+  return null;
+};
 
 export default function Register() {
   // toast.success("sg");

@@ -36,7 +36,7 @@ const LogoutComponent: React.FC<LogoutComponentProps> = ({ username }) => {
   console.log(username);
   return (
     <>
-      <p className="capitalize">{"username"}</p>
+      <p className="capitalize">{username}</p>
       <button onClick={logout} className="btn btn-primary">
         Logout
       </button>

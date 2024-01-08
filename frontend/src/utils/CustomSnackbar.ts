@@ -26,6 +26,7 @@ export default {
     this.toast(msg, "error", options);
   },
   toast(msg: string, variant: VariantType = "default") {
+    if (!useSnackbarRef) return;
     useSnackbarRef.enqueueSnackbar(msg, { variant });
   },
 };

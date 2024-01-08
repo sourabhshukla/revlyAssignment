@@ -1,4 +1,16 @@
-export default function DoubtContainer({ text, status, timestamp, subject }) {
+interface Props {
+  text: string;
+  status: boolean;
+  timestamp: string;
+  subject: string;
+}
+
+export default function DoubtContainer({
+  text,
+  status,
+  timestamp,
+  subject,
+}: Props) {
   const color = status ? "text-green-500" : "text-red-500";
   return (
     <div className="card w-full bg-base-100 shadow-xl cursor-pointer mt-12">

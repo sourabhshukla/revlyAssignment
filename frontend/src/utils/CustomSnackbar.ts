@@ -7,26 +7,21 @@ export const SnackbarUtilsConfigurator: React.FC = () => {
   return null;
 };
 
-const options = {
-  autoHideDuration: 3000,
-  variant: "error",
-};
-
 export default {
   success(msg: string) {
-    this.toast(msg, "success", options);
+    this.toast(msg, "success");
   },
   warning(msg: string) {
-    this.toast(msg, "warning", options);
+    this.toast(msg, "warning");
   },
   info(msg: string) {
-    this.toast(msg, "info", options);
+    this.toast(msg, "info");
   },
   error(msg: string) {
-    this.toast(msg, "error", options);
+    this.toast(msg, "error");
   },
   toast(msg: string, variant: VariantType = "default") {
     if (!useSnackbarRef) return;
-    useSnackbarRef.enqueueSnackbar(msg, { variant });
+    useSnackbarRef.enqueueSnackbar(msg, { variant, autoHideDuration: 3000 });
   },
 };

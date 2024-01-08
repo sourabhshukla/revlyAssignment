@@ -47,7 +47,7 @@ export default function RegisterForm() {
   const handleSubmit = async () => {
     if (validateInput()) {
       try {
-        const res = await axios.post(`${BASE_URL}/auth/register`, userData);
+        await axios.post(`${BASE_URL}/auth/register`, userData);
         enqueueSnackbar("Registered Successfully", {
           autoHideDuration: 3000,
           variant: "success",

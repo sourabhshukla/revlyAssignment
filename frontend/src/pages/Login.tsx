@@ -1,7 +1,6 @@
 import { redirect } from "react-router-dom";
 import Header from "../components/Header";
 import LoginForm from "../components/LoginForm";
-import SnackbarUtils from "../utils/CustomSnackbar";
 
 export const loader = () => {
   const token = localStorage.getItem("token");

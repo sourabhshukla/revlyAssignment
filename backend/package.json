@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "build": "npm install typescript&&npx tsc",
-    "start": "npm install&&node dist/server.js",
+    "start": "npm install&&node server.js",
     "dev": "nodemon server.ts"
   },
   "keywords": [],

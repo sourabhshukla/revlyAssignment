@@ -2,7 +2,6 @@ import { useState } from "react";
 import Header from "../components/Header";
 import DoubtContainer from "../components/DoubtContainer";
 import { redirect, useLoaderData } from "react-router-dom";
-import SnackbarUtils from "../utils/CustomSnackbar";
 import TutorHomeComponent from "../components/TutorHomeComponent";
 import StudentHomeComponent from "../components/StudentHomeComponent";
 import axios from "axios";
@@ -23,7 +22,7 @@ export const loader = async () => {
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
   if (!role || !username || !token) {
-    SnackbarUtils.warning("Please login to access this resource");
+    // SnackbarUtils.warning("Please login to access this resource");
     return redirect("/login");
   }
 
@@ -49,7 +48,7 @@ export const loader = async () => {
     }
   } catch (e: any) {
     console.log(e);
-    SnackbarUtils.error(e.response?.data?.message);
+    // SnackbarUtils.error(e.response?.data?.message);
   }
 
   return null;

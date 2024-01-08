@@ -6,7 +6,7 @@ import SnackbarUtils from "../utils/CustomSnackbar";
 export const loader = () => {
   const token = localStorage.getItem("token");
   if (token) {
-    SnackbarUtils.warning("Please logout first to Register");
+    // SnackbarUtils.warning("Please logout first to Register");
     return redirect("/");
   }
   return null;
